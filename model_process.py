@@ -24,7 +24,6 @@ def train(network, optimizer, train_set, train_labels, batch_size=32):
         episode_loss += loss.item()
         correct_in_episode += get_num_correct(predictions, labels)
 
-    # print(f"Epoch: {epoch + 1} accuracy: {correct_in_episode * 100 / TRAINING_SIZE:.2f} loss: {episode_loss:.3f}", end="\t")
     return episode_loss, correct_in_episode * 100 / TRAINING_SIZE
 
 def test(network, test_set, test_labels, batch_size=32):
@@ -43,5 +42,4 @@ def test(network, test_set, test_labels, batch_size=32):
             episode_loss = loss.item()
             correct_in_episode += get_num_correct(predictions, labels)
 
-    # print(f'Validation: Accuracy: {correct_in_episode * 100 / TESTING_SIZE:.2f} loss: {episode_loss:.3f}')
     return episode_loss, correct_in_episode * 100 / TESTING_SIZE
