@@ -27,17 +27,13 @@ if NEED_TO_CREATE_H5:
 train_set, train_labels, test_set, test_labels = dataset_loader.load_h5_dataset()
 
 BATCH_SIZE = 128
-# ---------- MAX ----------
-# 32: 57% train - 44% test
-# 64: 78% train - 69% test
-# 128: 88% train - 71% test
 
 train_set, train_labels = dataset_loader.create_batch(train_set, train_labels, BATCH_SIZE)
 test_set, test_labels = dataset_loader.create_batch(test_set, test_labels, BATCH_SIZE)
 
 CNN = conv2d.CNN()
 
-EPOCHS = 20
+EPOCHS = 35
 LEARNING_RATE = 0.001
 
 
