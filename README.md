@@ -33,7 +33,7 @@ But as you can see there still two issues:
 2) There is a lot of blank space between each graph.
 
 To solve the first issue I used `plt.xlim()`, `plt.ylim()` and `plt.axis('off')` to set the same scale for all images.<br>
-To solve the second issue I used those few lines wich I fonded on StackOverflow:
+To solve the second issue I used those few lines wich I founded on StackOverflow:
 ```py
 def setUpPlot_noBlankSpace():
     plt.gca().set_axis_off()
