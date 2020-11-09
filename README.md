@@ -44,9 +44,9 @@ def setUpPlot_noBlankSpace():
 ```
 (NB: you can find those code in `dataset_loader.py`)
 
-Now I have an image like this almost ready to be fit:<br>
-<img src=".img/yesImageNoBlankSpace.png"/>
-
+Now I have an image like this, almost ready to be fit:<br>
+<img src=".img/yesImageNoBlankSpace.png"/><br>
+To improve the training process, I resize every image into a 64\*64 image and created batches.
 #### Model
 The next step is to crete the Neural Network.
 
