@@ -1,4 +1,4 @@
-import network
+import conv2d
 import model_process
 import dataset_loader
 
@@ -27,6 +27,7 @@ if NEED_TO_CREATE_H5:
 train_set, train_labels, test_set, test_labels = dataset_loader.load_h5_dataset()
 
 BATCH_SIZE = 128
+# ---------- MAX ----------
 # 32: 57% train - 44% test
 # 64: 78% train - 69% test
 # 128: 88% train - 71% test
@@ -34,7 +35,7 @@ BATCH_SIZE = 128
 train_set, train_labels = dataset_loader.create_batch(train_set, train_labels, BATCH_SIZE)
 test_set, test_labels = dataset_loader.create_batch(test_set, test_labels, BATCH_SIZE)
 
-CNN = network.CNN()
+CNN = conv2d.CNN()
 
 EPOCHS = 20
 LEARNING_RATE = 0.001
@@ -61,7 +62,6 @@ for epoch in range(EPOCHS):
     print(f'Validation: Accuracy: {testing_accuracy:.2f} loss: {testing_loss:.3f}')
 
 
-# fig = plt.figure()
 plt.plot(list(range(1, len(training_losses)+1)), training_losses, color='blue')
 plt.plot(list(range(1, len(testing_losses)+1)), testing_losses, color='red')
 
@@ -70,8 +70,6 @@ plt.xlabel('number of training examples seen')
 plt.ylabel('Loss')
 plt.show()
 
-
-# fig = plt.figure()
 
 plt.plot(list(range(1, len(training_accuracies)+1)), training_accuracies, color='blue')
 plt.plot(list(range(1, len(testing_accuracies)+1)), testing_accuracies, color='red')
