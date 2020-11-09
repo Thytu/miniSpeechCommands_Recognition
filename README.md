@@ -44,14 +44,14 @@ def setUpPlot_noBlankSpace():
 ```
 (NB: you can find those code in `dataset_loader.py`)
 
-Now I have an image like this almost ready to be fit:
+Now I have an image like this almost ready to be fit:<br>
 <img src=".img/yesImageNoBlankSpace.png"/>
 
 #### Model
 The next step is to crete the Neural Network.
 
 I used a Simple Convolutional Neural Network.<br>
-[Source code](https://github.com/Thytu/miniSpeechCommands_Recognition/conv2d.py) behind:
+[Source code](https://github.com/Thytu/miniSpeechCommands_Recognition/conv2d.py):
 ```py
 class CNN(nn.Module):
     def __init__(self):
@@ -59,9 +59,9 @@ class CNN(nn.Module):
         self.conv1 = nn.Conv2d(in_channels=4, out_channels=6, kernel_size=3)
         self.conv2 = nn.Conv2d(in_channels=6, out_channels=12, kernel_size=3)
         self.conv3 = nn.Conv2d(in_channels=12, out_channels=24, kernel_size=3)
-        self.fc1 = nn.Linear(24 * 6 * 6, 2_000)
-        self.fc2 = nn.Linear(2_000, 1_500)
-        self.out = nn.Linear(1_500, 1251)
+        self.fc1 = nn.Linear(24 * 6 * 6, 200)
+        self.fc2 = nn.Linear(200, 50)
+        self.out = nn.Linear(50, 8)
 
     def forward(self, t):
         t = self.conv1(t)
@@ -85,17 +85,15 @@ class CNN(nn.Module):
         t = F.relu(t)
 
         t = self.out(t)
-        t = F.relu(t)
 
         return t
 ```
-#### Hyperparameters
-
-EPOCHS = 50
-LEARNING_RATE = 0.001
-
-optimizer = Adam
-loss_function = F.cross_entropy
 
 #### Results
 
+
+<code>BATCH_SIZE = 128</code>
+<code>LEARNING_RATE = 0.001</code>
+<code>optimizer = Adam</code>
+<code>loss_function = F.cross_entropy<br></code>
+<img src=".img/resultConv2d.png" />
